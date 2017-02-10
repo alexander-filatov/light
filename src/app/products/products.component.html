@@ -1,0 +1,10 @@
+<div class="product" *ngFor="let product of products; let i = index">
+    <h2 class="title">{{product.title | uppercase}}</h2>
+    <img [src]="product.img" alt="{{product.title}}" class="img">
+    <div class="descr_wrapper">
+        <p class="description">{{product.text}}
+            <span class="fade"></span>
+        </p>
+    </div>
+    <span class="more" [routerLink]="['/products', i]">More details</span>
+</div>

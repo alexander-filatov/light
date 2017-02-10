@@ -1,0 +1,22 @@
+<div class="close_rew">
+    <span class="close" routerLink="../">Close reviews</span>
+</div>
+<div class="rate">
+    <span class="r_title">Rate:</span>
+    <span class="stars icon-star-full" *ngFor="let star of commonRating"></span>
+</div>
+    <div class="info" *ngFor="let reviev of revievs; let j = index">
+        <span class="info_items">Date: {{reviev.created_at | date}}</span>
+        <span class="info_items">User name: {{reviev.created_by.username}}</span>
+        <div class="info_items user_rating">
+            <span class="r_title">Rating:</span>
+            <span class="stars icon-star-full" *ngFor="let star of reviev.rate"></span>
+        </div>
+        <span class="info_items">Review: {{reviev.text}}</span>
+    </div>
+<div class="pagination">
+    <span class="pag_item" *ngFor="let page of pagArray; let i = index" (click)="changePage(i)" [ngClass]="{active: i == page ? true : false}">{{i + 1}}</span>
+</div>
+<div class="make_rev"></div>
+
+<app-new-review></app-new-review>

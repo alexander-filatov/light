@@ -1,3 +1,24 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="nav">
+    <div class="link_wrapp">
+        <span class="links" routerLink="products" routerLinkActive="active">Products</span>
+        <span class="links" routerLink="delivery" routerLinkActive="active">Delivery</span>
+    </div>
+    <div class="user icon-down">
+        <span class="user_name">{{startUserName}}</span>
+        <div class="hidden_menu">
+            <form action="#" class="user_form" #theForm="ngForm" (submit)="logInUser(theForm)" *ngIf="showForm">
+                <input type="text" class="user_fields" placeholder="Login" name="username" [(ngModel)]="userlogin" required>
+                <input type="password" class="user_fields" placeholder="password" name="password" [(ngModel)]="userpassword" required>
+                <span  *ngIf="showNotify" [ngClass]="{logged: allOk, mistake: !allOk}">{{message}}</span>
+                <button type="submit" class="submit" [disabled]="theForm.invalid">Submit</button>
+            </form>
+            <div class="form_links">
+                <span class="actions" routerLink="registration">Registration</span>
+                <span class="actions" (click)="logOut()" *ngIf="showLogOut">Log out</span>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,49 @@
+:host{
+    width: 100%;
+    max-width: 40em;
+    margin: 5em auto 0;
+    background: rgb(238, 238, 238);
+}
+.form{
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+}
+.title{
+    text-transform: uppercase;
+    font-size: 2em;
+    padding: 0.5em 0;
+    text-align: center;
+}
+.inputs{
+    width: 100%;
+    margin: 1em 0;
+    padding: 0.8em 1.5em;
+}
+.button{
+    padding: 0.5em 1em;
+    margin: 2em auto;
+    display: block;
+
+}
+.registred,
+.mistake{
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 0.8em 0;
+}
+.mistake{
+    color: red;
+    background: rgba(255, 0, 0, 0.11);
+}
+.registred{
+    color: green;
+    background: rgba(0, 128, 0, 0.11);
+}
+input.ng-touched.ng-invalid {
+    border:solid red 2px;
+}
+input.ng-touched.ng-valid {
+    border:solid green 2px;
+}

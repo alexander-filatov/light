@@ -1,0 +1,25 @@
+:host{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.rate_wrapp{
+    display: flex;
+    margin-top: 2em;
+}
+.star_wrapp{
+    display: flex;
+    margin-left: 1em;
+}
+.rate_text{
+    width: 100%;
+    resize: none;
+    min-height: 5em;
+    padding: 0.8em;
+    margin-top: 1em;
+}
+.submit{
+    padding: 0.8em 1em;
+    margin: 1em auto 0;
+    display: block;
+}

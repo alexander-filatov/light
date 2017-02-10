@@ -1,0 +1,22 @@
+:host{
+  max-width: 30em;
+  padding: 1em;
+  margin: 5em auto 0;
+  text-align: center;
+}
+.img{
+  margin-top: 1em;
+}
+.description{
+  margin-top: 1em;
+  text-align: left;
+}
+.link_wrapp{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+.links{
+  color: #00a0d2;
+  cursor: pointer;
+}

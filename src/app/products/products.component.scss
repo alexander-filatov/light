@@ -1,0 +1,50 @@
+:host{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.product{
+  margin: 1em;
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  max-width: 20em;
+}
+.title{
+  text-align: center;
+  margin-bottom: 1em;
+}
+.img{
+  transition: 0.3s;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  &:hover{
+    transform: scale3d(1.2,1.2,1);
+  }
+}
+.description{
+  margin-top: 1em;
+  max-height: 5em;
+  overflow-y: auto;
+}
+.descr_wrapper{
+  position: relative;
+
+}
+.more{
+  color: #00a0d2;
+  text-align: right;
+  display: block;
+  margin-top: 1em;
+  cursor: pointer;
+}
+.fade{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.8em;
+  width: 100%;
+  background: linear-gradient(to top, white, transparent);
+}
