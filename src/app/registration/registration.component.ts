@@ -30,7 +30,6 @@ export class RegistrationComponent implements OnInit {
 
   }
   submitForm(form: NgForm): void {
-    let theForm = form;
     this.httpService.sendUserData(form.value, this.url).subscribe(data => {
       console.log(data)
       // if user is exist should get a 400 series mistake

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { Response, Headers } from '@angular/http';
-import { Observable } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -34,7 +34,10 @@ export class HttpRequestService {
 
   token: string;
 
-  constructor(private http: Http) { }
+  private boolSubject: Subject<boolean> = new Subject<boolean>();
+
+  constructor(private http: Http) {
+  }
 
   getAllProducts (): Observable<Product[]> {
 
@@ -55,8 +58,9 @@ export class HttpRequestService {
     }).catch((error: any)=> { return Observable.throw(error);});
   }
 
-  sendUserData (obj: RegisterInt, url: string): Observable<regResponse> {
+  sendUserData (obj: any, url: string, header?:any): Observable<regResponse> {
       let headers = new Headers({ 'Content-Type': 'application/json' });
+      header && headers.append( 'Authorization', header);
       let body = JSON.stringify(obj);
         console.log(obj)
     return this.http.post(this.common + url, body, { headers: headers }).map((resp: Response) => {
@@ -66,10 +70,18 @@ export class HttpRequestService {
 
   saveToken (token: string): void{
       this.token = token;
+        this.boolSubject.next(false);
+      this.eventEmitt()
   }
 
   clearToken (): void {
       this.token = null;
+      this.boolSubject.next(true);
+      this.eventEmitt();
+  }
+
+  eventEmitt (): Observable<boolean> {
+      return this.boolSubject.asObservable();
   }
 
 }

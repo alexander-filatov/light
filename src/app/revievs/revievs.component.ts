@@ -31,7 +31,8 @@ export class RevievsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.httpService.getProductReviev(this.id).subscribe(data => {
+    this.httpService.getProductReviev(this.id).subscribe(request => {
+      let data = request.reverse();
       for (let i = data.length; i--; data[i].rate = Array(data[i].rate)){
         this.counter += data[i].rate
       }

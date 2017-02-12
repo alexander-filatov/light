@@ -23,3 +23,36 @@
     margin: 1em auto 0;
     display: block;
 }
+.rate_item{
+    display: block;
+}
+.hovered > .rate_item{
+    &:before{
+        color: #f6c150;
+    }
+}
+.currentHovered ~ .star_groupp > .rate_item{
+    &:before{
+        color: black
+    }
+}
+
+.choosen > .rate_item{
+    &:before{
+        content: '\e900';
+        color: #dc7c29!important;
+    }
+}
+.disabled{
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
