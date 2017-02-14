@@ -1,4 +1,4 @@
-<form action="#" class="form" #regForm="ngForm" (ngSubmit)="submitForm(regForm)" appInvalid>
+<form action="#" class="form" #regForm="ngForm" (ngSubmit)="submitForm(regForm)" >
     <h2 class="title">New user registration</h2>
     <input type="text" class="inputs" placeholder="Login" name="username" (change)="hideMistake()" [(ngModel)]="regLogin" required>
     <input type="password" class="inputs" placeholder="Password" name="password" [(ngModel)]="regPassword" required>

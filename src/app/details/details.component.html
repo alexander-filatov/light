@@ -3,7 +3,8 @@
   <img [src]="currentProduct.img" alt="{{currentProduct.title}}" class="img">
     <p class="description">{{currentProduct.text}}</p>
   <div class="link_wrapp">
-    <span class="links" [routerLink]="['reviews']" [queryParams]="{'id': currentProduct.id}">Reviews</span>
+    <span class="links" [routerLink]="['reviews']" [queryParams]="{'id': currentProduct.id}" *ngIf="showReviews" (click)="toggleShowReviews(false)">Reviews</span>
+    <span class="links" [routerLink]="'./'" *ngIf="!showReviews" (click)="toggleShowReviews(true)">Close reviews</span>
     <span class="links" [routerLink]="'../'" >Back to all products</span>
   </div>
 </div>

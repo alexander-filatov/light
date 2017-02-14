@@ -1,6 +1,4 @@
-<div class="close_rew">
-    <span class="close" routerLink="../">Close reviews</span>
-</div>
+
 <div class="rate">
     <span class="r_title">Rate:</span>
     <span class="stars icon-star-full" *ngFor="let star of commonRating"></span>
@@ -15,8 +13,7 @@
         <span class="info_items">Review: {{reviev.text}}</span>
     </div>
 <div class="pagination">
-    <span class="pag_item" *ngFor="let page of pagArray; let i = index" (click)="changePage(i)" [ngClass]="{active: i == page ? true : false}">{{i + 1}}</span>
+    <span class="pag_item" *ngFor="let pagees of pagArray; let i = index" (click)="changePage(i)" [ngClass]="{active: i == page ? true : false}">{{i + 1}}</span>
 </div>
-<div class="make_rev"></div>
 
-<app-new-review [productId]="id"></app-new-review>
+<app-new-review [productId]="id" (revievAdded)="getNewRevievs($event)" ></app-new-review>

@@ -1,14 +1,15 @@
 <form action="#" #revForm="ngForm" (submit)="sendReviev(revForm)" [ngClass]="{disabled: authorized}">
     <div class="rate_wrapp">
         <span class="rate_ti">Your rate:</span>
-        <div class="star_wrapp">
-            <div class="star_groupp" appStars  *ngFor="let star of stars; let ind = index" [attr.data-index]="ind + 1">
-                <input type="radio" hidden id="radio_{{ind}}" name="rate" value="{{ind}}" [(ngModel)]="rate" class="rate_input" required >
-                <label  for="radio_{{ind}}" class="rate_item icon-star-empty"></label>
-            </div>
+        <div class="star_wrapp" id="star_wrapper">
+            <label  class="rate_item icon-star-empty" *ngFor="let star of stars; let ind = index" [attr.data-index]="ind + 1" appStars>
+                <input type="radio" hidden  name="rate" value="{{ind + 1}}" [(ngModel)]="rate" class="rate_input" required >
+            </label>
         </div>
     </div>
     <textarea class="rate_text" name="text" [(ngModel)]="text" required></textarea>
-    <button class="submit" type="submit" [hidden]="revForm.invalid">Send</button>
+    <span class="mistake" *ngIf="showError">{{errorMessage}}</span>
+    <button class="submit" type="submit" [disabled]="revForm.invalid" *ngIf="!authorized">Send</button>
+    <span class="submit" *ngIf="authorized">Please log in, to write a review</span>
 </form>
 

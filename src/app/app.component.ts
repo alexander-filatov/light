@@ -32,12 +32,23 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.startUserName = 'Unknown user';
+    let token = JSON.parse(localStorage.getItem('token'));
+    let name = JSON.parse(localStorage.getItem('name'));
+
+    if (token && name) {
+      this.httpService.saveToken(name, token);
+      this.startUserName = name;
+      this.showNotify = false;
+      this.showForm = false;
+      this.showLogOut = true;
+    }
   }
 
 
   logInUser(form: NgForm): void {
+
+
     this.httpService.sendUserData(form.value, this.url).subscribe(data => {
-          console.log(data)
           // if user is exist should get a 400 series mistake
           this.showNotify = true;
           if (!data.success){
@@ -47,7 +58,7 @@ export class AppComponent implements OnInit{
             this.message = this.messages.ok;
             this.allOk = true;
             this.startUserName = form.value.username;
-            this.httpService.saveToken(data.token);
+            this.httpService.saveToken(form.value.username, data.token);
             form.reset();
             let timeout = setTimeout(() => {
               this.showNotify = false;

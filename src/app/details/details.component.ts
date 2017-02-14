@@ -14,24 +14,30 @@ import { Product } from '../common-classes/product';
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
-  products: Product[] = [];
   error: any;
   private id: number;
   private subscription: Subscription;
   currentProduct: Product;
-
+  showReviews: boolean;
 
   constructor(private activeRout: ActivatedRoute, private httpService: HttpRequestService) {
+
     this.subscription = activeRout.params.subscribe(params=>this.id=params['id']);
   }
 
   ngOnInit() {
+    this.currentProduct = {
+      id: '',
+      img: '',
+    text: '',
+    title: ''
+    };
     this.httpService.getAllProducts().subscribe(data => {
-          console.log(data)
           data && this.getCurrentProduct(data);
     },
         error => {this.error = error; console.log(error);}
     );
+    this.showReviews = true;
   }
 
   ngOnDestroy() {
@@ -40,6 +46,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   getCurrentProduct(data: Product[]): void {
     this.currentProduct = data[this.id]
+  }
+
+  toggleShowReviews(flag) {
+    this.showReviews = flag;
   }
 
 

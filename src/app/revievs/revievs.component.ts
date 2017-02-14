@@ -31,19 +31,24 @@ export class RevievsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.httpService.getProductReviev(this.id).subscribe(request => {
-      let data = request.reverse();
-      for (let i = data.length; i--; data[i].rate = Array(data[i].rate)){
-        this.counter += data[i].rate
-      }
-      this.commonRating = Array(Math.round(this.counter/data.length));
-      let arr = [];
+    this.getProductRevievs(true)
+  }
+
+  getProductRevievs(flag: boolean) {
+
+    flag && this.httpService.getProductReviev(this.id).subscribe(request => {
+          let data = request.reverse();
+          for (let i = data.length; i--; data[i].rate = Array(data[i].rate)){
+            this.counter += data[i].rate
+          }
+          this.commonRating = Array(Math.round(this.counter/data.length));
+          let arr = [];
           while (data.length){
             arr.push(data.splice(0, this.step));
           }
           this.pagArray = arr;
           this.revievs = arr[this.page];
-    },
+        },
         error => {this.error = error; console.log(error);}
     );
   }
@@ -56,6 +61,10 @@ export class RevievsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.query.unsubscribe();
+  }
+
+  getNewRevievs(event) {
+    this.getProductRevievs(event)
   }
 
 }

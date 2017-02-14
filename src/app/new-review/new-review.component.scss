@@ -26,18 +26,18 @@
 .rate_item{
     display: block;
 }
-.hovered > .rate_item{
+.hovered {
     &:before{
         color: #f6c150;
     }
 }
-.currentHovered ~ .star_groupp > .rate_item{
+.currentHovered ~ .rate_item{
     &:before{
         color: black
     }
 }
 
-.choosen > .rate_item{
+.choosen {
     &:before{
         content: '\e900';
         color: #dc7c29!important;
@@ -55,4 +55,12 @@
         z-index: 2;
         background: rgba(255, 255, 255, 0.5);
     }
+}
+.mistake{
+    color: red;
+    background: rgba(255, 0, 0, 0.11);
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 0.8em 0;
 }

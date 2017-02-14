@@ -26,9 +26,9 @@
 .user{
   position: relative;
   padding: 0.5em 0;
-  &:hover > .hidden_menu{
-    display: flex;
-  }
+  //&:hover > .hidden_menu{
+  //  display: flex;
+  //}
 }
 .hidden_menu{
   position: absolute;
@@ -93,4 +93,8 @@ input.ng-touched.ng-invalid {
 }
 input.ng-touched.ng-valid {
   border:solid green 2px;
+}
+
+#hidden_menu_toggle:checked ~ .hidden_menu{
+  display: flex;
 }

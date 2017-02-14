@@ -3,9 +3,10 @@
         <span class="links" routerLink="products" routerLinkActive="active">Products</span>
         <span class="links" routerLink="delivery" routerLinkActive="active">Delivery</span>
     </div>
-    <div class="user icon-down">
-        <span class="user_name">{{startUserName}}</span>
-        <div class="hidden_menu">
+    <div class="user icon-down" appShowMenu>
+        <label for="hidden_menu_toggle" class="user_name">{{startUserName}}</label>
+        <input type="checkbox" id="hidden_menu_toggle"  hidden>
+        <div class="hidden_menu" >
             <form action="#" class="user_form" #theForm="ngForm" (submit)="logInUser(theForm)" *ngIf="showForm">
                 <input type="text" class="user_fields" placeholder="Login" name="username" [(ngModel)]="userlogin" required>
                 <input type="password" class="user_fields" placeholder="password" name="password" [(ngModel)]="userpassword" required>

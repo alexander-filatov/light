@@ -12,9 +12,9 @@ import { RevievsComponent } from './revievs/revievs.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 import { HttpRequestService } from './services/http-request.service';
-import { InvalidDirective } from './directives/invalid.directive';
 import { NewReviewComponent } from './new-review/new-review.component';
 import { StarsDirective } from './directives/stars.directive';
+import { ShowMenuDirective } from './directives/show-menu.directive';
 
 let childRoutes: Routes = [
   {path: 'reviews', component: RevievsComponent}
@@ -39,9 +39,9 @@ let routes: Routes = [
     DetailsComponent,
     RevievsComponent,
     RegistrationComponent,
-    InvalidDirective,
     NewReviewComponent,
-    StarsDirective
+    StarsDirective,
+    ShowMenuDirective
   ],
   imports: [
     BrowserModule,

@@ -20,19 +20,15 @@ export class StarsDirective {
   }
 
   onMouseEnter(){
-    console.log(this)
     let childrens = this.elRef.nativeElement.parentNode.children;
     for (let i = childrens.length; i--; childrens[i].classList.add('hovered')){}
     this.elRef.nativeElement.classList.add('currentHovered')
   }
 
   onMouseClick(){
-    console.log(this)
-
     let childrens = this.elRef.nativeElement.parentNode.children;
 
     for (let i = childrens.length; i--; childrens[i].classList.remove('choosen')){}
-console.log(this.elRef.nativeElement.getAttribute('data-index'))
     for ( let j = 0; j < this.elRef.nativeElement.getAttribute('data-index'); j++ ){
       childrens[j].classList.add('choosen')
     }

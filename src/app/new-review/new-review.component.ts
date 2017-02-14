@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { HttpRequestService } from '../services/http-request.service';
@@ -12,11 +12,18 @@ import { HttpRequestService } from '../services/http-request.service';
 })
 export class NewReviewComponent implements OnInit {
 
-  stars: any = Array(10);
+  starQuontity: number = 10;
+  stars: any = Array(this.starQuontity);
   authorized: boolean;
   @Input() productId: number;
   url: string = '/api/reviews/';
   error: any;
+  showError: boolean = false;
+  errorMessage: string;
+  messages: any = {
+    serverError: "Can't send review, try again"
+  };
+  @Output() revievAdded = new EventEmitter<boolean>();
 
   constructor(private httpService: HttpRequestService) { }
 
@@ -28,14 +35,18 @@ export class NewReviewComponent implements OnInit {
   }
 
   sendReviev(form: NgForm) {
-    // console.log(this.url + this.productId)
-    console.log(form)
     this.httpService.sendUserData(form.value, this.url + this.productId, 'Token ' + this.httpService.token).subscribe(data => {
-          // if user is exist should get a 400 series mistake
+          this.showError = false;
+          this.revievAdded.emit(data.success ? true : false);
+          form.reset()
+      let labels = document.getElementById('star_wrapper').children;
+          for (let i = labels.length; i--; labels[i].classList.remove('choosen')){}
 
         },
         error => {
           console.log(error)
+          this.showError = true;
+          this.errorMessage = this.messages.serverError;
         }
     );
   }
