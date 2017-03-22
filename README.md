@@ -1,3 +1,9 @@
+# 1.Clone repository. 
+# 2.Enter to local directory with cloned project. 
+# 3.Run "npm install". 
+# 4.Run "ng serve" to run angular cli developer mode wiht local server. 
+# 5.Navigate to http://localhost:4200/ in browser.
+
 # Light
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
